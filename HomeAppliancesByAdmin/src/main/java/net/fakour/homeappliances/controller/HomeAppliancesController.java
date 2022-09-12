@@ -34,33 +34,5 @@ public class HomeAppliancesController {
 
     }
 
-    @GetMapping("getbycategory")
-    public List<HomeAppliancesEntity> getAllByCategoryPrice(@RequestBody RequestUserDto requestUserDto,@RequestHeader(value = "Token") String token){
-
-        return homeAppliancesService.getAllByCategoryPrice(requestUserDto,token);
-    }
-
-    @GetMapping("filterbycatandpri")
-    public List<HomeAppliancesEntity> getFilterPrice(@RequestParam(value = "cat") String category,@RequestParam(value = "pdown") BigDecimal down, @RequestParam(value = "pup")BigDecimal up,@RequestHeader(value = "Token") String token) {
-
-        return homeAppliancesService.getFilterPrice(category,down,up,token);
-
-    }
-
-    @GetMapping("commentofproduct")
-    public ResponsUserDto getCommentByProduct(
-            @RequestParam(value = "product") String name,
-            @RequestParam(value = "code")String code,@RequestHeader(value = "Token") String token) {
-
-        return homeAppliancesService.getCommentByProduct(name, code,token);
-
-    }
-
-    @GetMapping("usersell")
-    public HomeAppliancesEntity userDoChoiceProduct(@RequestBody RequestUserDto requestUserDto,@RequestHeader(value = "Token") String token){
-
-        return homeAppliancesService.userDoChoiceProduct(requestUserDto,token);
-
-    }
 
 }

@@ -20,13 +20,6 @@ public class HomeAppliancesController {
         this.homeAppliancesService = homeAppliancesService;
     }
 
-    //----------------------- Enter product by admin
-
-    @PostMapping("insertadmin")
-    public HomeAppliancesEntity insertProductbyAdmin(@RequestBody RequestUserDto requestUserDto,@RequestHeader(value = "Token") String token){
-
-        return homeAppliancesService.insertProductbyAdmin(requestUserDto,token);
-    }
 
     @GetMapping("getall")
     public List<HomeAppliancesEntity> getAllProduct(@RequestBody RequestUserDto requestUserDto,@RequestHeader(value = "Token") String token){

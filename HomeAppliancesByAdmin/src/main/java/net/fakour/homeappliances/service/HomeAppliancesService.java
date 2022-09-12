@@ -13,11 +13,4 @@ public interface HomeAppliancesService {
 
     List<HomeAppliancesEntity> getAllProduct(RequestUserDto requestUserDto,String token);
 
-    List<HomeAppliancesEntity> getAllByCategoryPrice(RequestUserDto requestUserDto,String token);
-
-    List<HomeAppliancesEntity> getFilterPrice(String category, BigDecimal down, BigDecimal up,String token);
-
-    ResponsUserDto getCommentByProduct(String name, String code,String token);
-
-    HomeAppliancesEntity userDoChoiceProduct(RequestUserDto userDoChoiceProduct,String token);
 }

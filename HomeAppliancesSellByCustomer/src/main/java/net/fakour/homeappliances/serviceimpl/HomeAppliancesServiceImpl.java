@@ -59,27 +59,6 @@ public class HomeAppliancesServiceImpl implements HomeAppliancesService {
 //    }
 
 
-    public HomeAppliancesEntity insertProductbyAdmin(RequestUserDto requestUserDto,String token) {
-
-        if(userRepository.existsByToken(token)) {
-
-            if (homeappliancesRepository.existsByCode(requestUserDto.getHomeAppliancesEntity().getCode())) {
-
-                commentRepository.saveAll(requestUserDto.getComment1());
-                return requestUserDto.getHomeAppliancesEntity();
-            }
-            //  homeappliancesRepository.updateComment(requestUserDto.getHomeAppliancesEntity().getCode(), requestUserDto.getHomeAppliancesEntity().getComment1List());
-
-            else if (requestUserDto.getUserEntity().getUsername().equals("admin")) {
-
-                commentRepository.saveAll(requestUserDto.getComment1());
-                return homeappliancesRepository.save(requestUserDto.getHomeAppliancesEntity());
-
-            }
-        }
-        return null;
-    }
-
     public List<HomeAppliancesEntity> getAllProduct(RequestUserDto requestUserDto,String token) {
 
         if(userRepository.existsByToken(token)) {

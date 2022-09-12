@@ -1,7 +1,6 @@
 package net.fakour.homeappliances.repository;
 
 import net.fakour.homeappliances.entity.HomeAppliancesEntity;
-import net.fakour.homeappliances.entity.Comment1;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

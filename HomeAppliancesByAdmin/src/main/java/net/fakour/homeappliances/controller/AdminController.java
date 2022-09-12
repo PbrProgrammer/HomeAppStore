@@ -24,9 +24,4 @@ public class AdminController {
         return userService.login(users);
     }
 
-    @PostMapping("/register")
-    public String register(@RequestBody UserEntity users) {
-        return userService.register(users);
-
-    }
 }

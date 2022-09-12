@@ -16,53 +16,6 @@ public class AdminServiceImpl implements AdminService {
         this.userRepository = userRepository;
     }
 
-    public String register(UserEntity userEntity){
-
-           final int MAX = 10;
-           final int MIN_Uppercase = 1;
-           int uppercaseCounter = 0;
-           int digitCounter = 0;
-           int specialCounter = 0;
-
-           String password = userEntity.getPassword();
-           String output = null;
-
-           for (int i = 0; i < password.length(); i++) {
-               char c = password.charAt(i);
-               if (Character.isUpperCase(c))
-                   uppercaseCounter++;
-               else if (Character.isDigit(c))
-                   digitCounter++;
-               if (c == '$' || c == '#' || c == '?' || c == '!' || c == '_' || c == '=' || c == '%' || c == '@') {
-                   specialCounter++;
-               }
-           }
-           String username = userEntity.getUsername();
-
-           if (specialCounter == 1 && password.length() >= MAX && uppercaseCounter >= MIN_Uppercase && digitCounter >= 2 && !username.equals("") && !userRepository.existsByUsername(userEntity.getUsername())) {
-
-               userRepository.save(userEntity);
-               return "User name and Password is Valid  \n" +
-                       "Register successful";
-           } else {
-               output = "Your password our username does not contain the following: ";
-
-               if (userRepository.existsByUsername(userEntity.getUsername()))
-                   output = output + "\n User name is already taken \n Enter another user name ";
-               if (username.length() < 3 && username.equals(""))
-                   output = output + "\n Enter user name atleast 3 characters";
-               if (password.length() < MAX)
-                   output = output + "\n Enter password atleast 10 characters";
-               if (uppercaseCounter < MIN_Uppercase)
-                   output = output + "\n Enter password at least 1 uppercase character";
-               if (digitCounter <= 2)
-                   output = output + "\n Enter password either 2 or 3 digits";
-               if (specialCounter < 1)
-                   output = output + "\n Password should contain only 1 special characters such as \"!,@,#,$,%,^,&,*\"";
-           }
-           return output;
-       }
-
 
 
     public UserEntity login(UserEntity users) {

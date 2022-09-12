@@ -2,7 +2,6 @@ package net.fakour.homeappliances.serviceimpl;
 
 import net.fakour.homeappliances.dto.RequestUserDto;
 import net.fakour.homeappliances.dto.ResponsUserDto;
-import net.fakour.homeappliances.entity.Comment1;
 import net.fakour.homeappliances.entity.HomeAppliancesEntity;
 import net.fakour.homeappliances.repository.CommentRepository;
 import net.fakour.homeappliances.repository.HomeappliancesRepository;
@@ -88,48 +87,6 @@ public class HomeAppliancesServiceImpl implements HomeAppliancesService {
         return null;
     }
 
-    public List<HomeAppliancesEntity> getAllByCategoryPrice(RequestUserDto requestUserDto,String token) {
 
-        if (userRepository.existsByToken(token)) {
-            return homeappliancesRepository.findAllByCategoryOrderByPriceDesc(requestUserDto.getHomeAppliancesEntity().getCategory());
-        }
-        return null;
-    }
-
-
-    public List<HomeAppliancesEntity> getFilterPrice(String category, BigDecimal down, BigDecimal up,String token) {
-
-        if(userRepository.existsByToken(token)) {
-            return homeappliancesRepository.findAllByCategoryAndPriceBetween(category,down,up);
-
-      }
-        return null;
-       }
-
-    public ResponsUserDto getCommentByProduct(String name, String code,String token) {
-
-        if (userRepository.existsByToken(token)) {
-            ResponsUserDto responsUserDto = new ResponsUserDto();
-            Map<HomeAppliancesEntity, List<Comment1>> userResponseComment = new HashMap<>();
-
-            userResponseComment.put(homeappliancesRepository.findByNameAndCode(name, code), commentRepository.findAllByNameAndCode(name, code));
-
-            responsUserDto.setUserResponseComment(userResponseComment);
-            return responsUserDto;
-        }
-        return null;
-    }
-
-    public HomeAppliancesEntity userDoChoiceProduct(RequestUserDto requestUserDto,String token) {
-        if (userRepository.existsByToken(token)) {
-            int stuckOfP = homeappliancesRepository.findByCode(requestUserDto.getHomeAppliancesEntity().getCode()).getStock();
-            stuckOfP = stuckOfP - (requestUserDto.getNumberOfProducts());
-
-            homeappliancesRepository.updateNumberOfProducts(homeappliancesRepository.findByCode(requestUserDto.getHomeAppliancesEntity().getCode()).getCode(), stuckOfP);
-
-            return homeappliancesRepository.findByCode(requestUserDto.getHomeAppliancesEntity().getCode());
-        }
-        return null;
-    }
 }
 

@@ -1,6 +1,5 @@
 package net.fakour.homeappliances.dto;
 
-import net.fakour.homeappliances.entity.Comment1;
 import net.fakour.homeappliances.entity.HomeAppliancesEntity;
 
 

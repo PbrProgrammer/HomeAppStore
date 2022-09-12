@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface HomeAppliancesService {
 
-    HomeAppliancesEntity insertProductbyAdmin(RequestUserDto requestUserDto,String token);
 
     List<HomeAppliancesEntity> getAllProduct(RequestUserDto requestUserDto,String token);
 
